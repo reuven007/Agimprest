@@ -1,0 +1,19 @@
+.avatar{
+  height: 35px;
+  clip-path: circle(49% at 50% 50%);
+  background-color: gray;
+  width: 35px;
+}
+/* 
+footer {
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+} */
+
+@media screen and (max-width: 1024px) {
+  .avatar{
+    display: none;
+  }
+}

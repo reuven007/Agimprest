@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgiPrest</title>
+</head>
+<link rel="stylesheet" href="../public/assets/css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="../public/assets/js/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid ">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/index.html" id="navbarDropdownMenuLink">
+                            Agimprest
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="cadastro" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            CADASTRO
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Empresa</a></li>
+                            <li><a class="dropdown-item" href="/cadastro/cliente.html">Cliente</a></li>
+                            <li><a class="dropdown-item" href="/cadastro/usuario.html">Usuário</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="movimentacoes" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            MOVIMENTAÇÕES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Entrada</a></li>
+                            <li><a class="dropdown-item" href="/cadastro/cliente.html">Saída</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="relatorios" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            RELATÓRIOS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Balanço</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="justify-content-end avatar"> </div>
+    </nav>
+
+
+    <div class="container mt-5 mb-5 section-center">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <table class="table" id="tabela-listagem-usuarios">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Grupo</th>
+                            <th scope="col">Operacoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Reuven Carabina Sexto</td>
+                            <td>Operadores</td>
+                            <td>
+                                <div class="d-flex justify-content-around"><i class="bi bi-pencil-square"
+                                        data-bs-toggle="tooltip" data-bs-title="Editar Usuario"></i><i
+                                        class="bi bi-trash" data-bs-toggle="tooltip"
+                                        data-bs-title="Remover Usuario"></i></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Gabriel Frael</td>
+                            <td>Diretor</td>
+                            <td>
+                                <div class="d-flex justify-content-around"><i class="bi bi-pencil-square"
+                                        data-bs-toggle="tooltip" data-bs-title="Editar Usuario"></i><i
+                                        class="bi bi-trash" data-bs-toggle="tooltip"
+                                        data-bs-title="Remover Usuario"></i></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-end"> <button type="button" class="btn btn-primary"
+                        id="cadastrar-usuario">Novo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p>Todos os direitos reservados &copy; 2023</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let usuarios = window.localStorage.getItem("usuarios")
+        if (usuarios != undefined && usuarios != null) {
+            usuarios = Array.from(JSON.parse(usuarios))
+            usuarios.forEach(us => {
+                var numeroLinha = $('#tabela-listagem-usuarios tbody tr th').last().html()
+                const html = `<tr><th scope=\"row\">${eval(parseInt(numeroLinha) + 1)}</th><td>${us.usuario}</td><td>${us.categoria}</td><td><div class=\"d-flex justify-content-around\"><i class=\"bi bi-pencil-square\" data-bs-toggle=\"tooltip\" data-bs-title=\"Editar Usuario\"></i><i class=\"bi bi-trash\" data-bs-toggle=\"tooltip\" data-bs-title=\"Remover Usuario\"></i></div></td></tr>`
+                $('#tabela-listagem-usuarios tbody').append(html)
+            })
+        }
+
+        $("#cadastrar-usuario").click((event) => window.location.href = "../cadastro/usuario.html")
+
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        console.log(usuarios)
+    </script>
+</body>
+
+</html>

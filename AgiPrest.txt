@@ -1,0 +1,53 @@
+
+Avatar com a foto do cara!
+
+Menu
+
+CADASTRO
+
+*Sub menu*
+Cliente
+Empresa
+Usuario
+
+*MOVIMENTACOES
+Entrada
+Saida
+
+*RELATORIOS
+balanco
+
+
+CLIENTE
+
+nome
+sobrenome
+cpf
+telefone
+logradouro
+numero
+comp
+bairro
+cidade
+UF
+cep
+
+
+EMPRESA
+razao social 12
+fantasia 12 requered
+cnpj
+endereco totais
+telefone
+capital social
+
+
+
+
+
+
+
+
+
+
+
