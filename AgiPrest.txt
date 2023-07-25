@@ -31,6 +31,7 @@ bairro
 cidade
 UF
 cep
+Status [SEM DEBITOS, INADINPLENTE]
 
 
 EMPRESA
@@ -39,11 +40,27 @@ fantasia 12 requered
 cnpj
 endereco totais
 telefone
-capital social
+capital social tipo money
+taxa 6
 
 
 
+Movimentacoes
+Botao buscar Clientes com icone na esq de um +
+input do tipo NOME disable
+Campo CPF disable
 
+Tipo
+valor entrada saida
+cliente campo select
+
+Calculadora no Head(Menu Navbar)
+Botao buscar Clientes com icone na esq de um +
+input do tipo NOME disable
+Campo CPF disable
+Valor emprestimo tipo money
+aliquota
+Valor a pagar ( = 1555.22)
 
 
 
