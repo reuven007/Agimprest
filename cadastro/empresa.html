@@ -29,7 +29,7 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/index.html" id="navbarDropdownMenuLink">
+                        <a class="nav-link" href="/agimprest/index.html" id="navbarDropdownMenuLink">
                             Agimprest
                         </a>
                     </li>
@@ -40,9 +40,9 @@
                             CADASTRO
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Empresa</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/cliente.html">Cliente</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/usuario.html">Usuário</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/empresa.html">Empresa</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/cliente.html">Cliente</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/usuario.html">Usuário</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -51,7 +51,7 @@
                             MOVIMENTAÇÕES
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/movimentacoes/movimentacoes.html">Listar </a></li>
+                            <li><a class="dropdown-item" href="/agimprest/movimentacoes/movimentacoes.html">Listar </a></li>
 
                         </ul>
                     </li>
@@ -85,6 +85,12 @@
                     <div class="col-md-12 mb-3">
                         <label for="fantasia" class="form-label">Fantasia</label>
                         <input type="text" class="form-control" id="fantasia" name="fantasia" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Senha valida/existente.
+                        </div>
                         <div class="valid-feedback">
                             Parece Bom!
                         </div>
@@ -130,7 +136,7 @@
                             Parece Bom!
                         </div>
                         <div class="invalid-feedback">
-                            Insira uma Taxa válida/existente.
+                            Insira uma Taxa.
                         </div>
                     </div>
 
@@ -142,7 +148,7 @@
                             Parece Bom!
                         </div>
                         <div class="invalid-feedback">
-                            Insira um Logradouro valido/existente.
+                            Insira um Logradouro.
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -153,7 +159,7 @@
                             Parece Bom!
                         </div>
                         <div class="invalid-feedback">
-                            Insira um Numero valido/existente.
+                            Insira um Numero.
                         </div>
                     </div>
                     <div class="col-md-9 mb-3">
@@ -163,7 +169,7 @@
                             Parece Bom!
                         </div>
                         <div class="invalid-feedback">
-                            Insira um Complemento valido/existente.
+                            Insira um Complemento.
                         </div>
                     </div>
 
@@ -174,7 +180,7 @@
                             Parece Bom!
                         </div>
                         <div class="invalid-feedback">
-                            Insira um bairro valido/existente.
+                            Insira um Bairro.
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -195,7 +201,7 @@
                             Parece Bom!
                         </div>
                         <div class="invalid-feedback">
-                            Insira uma Cidade valido/existente.
+                            Insira uma Cidade.
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -205,7 +211,7 @@
                                 Parece Bom!
                             </div>
                             <div class="invalid-feedback">
-                                Insira um Estado valido/existente.
+                                Insira um Estad.
                             </div>
                             <option selected disabled>Rio de Janeiro</option>
                         </select>
@@ -233,25 +239,12 @@
 
 
     <script>
-        //    var listar =  document.getElementById("listar")
-        //     listar.addEventListener("onclick", function(e){
-        //         window.location.href = "../listagem/listagem-empresa.html";
-
-        //     } )
-        var elementoNome = document.getElementById("nome")
-        elementoNome.addEventListener("keyup", function (event) {
-
-            var nome = elementoNome.value
-            nome = nome.toUpperCase()
-            elementoNome.value = nome
+         $("#salvar").click(event => {
+            if(validaFormulario(event)){
+                alert(usuario, senha, confirmaSenha, categoria)
+            }
+            
         })
-
-        // function executarQuandoDerDoisCliques() {
-
-        //     var nome = elementoNome.value
-        //     nome = nome.toUpperCase()
-        //     elementoNome.value = nome
-        // }
 
         $("#listar").click((event) => {
             window.location.href = "../listagem/listagem-empresa.html";

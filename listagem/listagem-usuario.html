@@ -29,7 +29,7 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/index.html" id="navbarDropdownMenuLink">
+                        <a class="nav-link" href="/agimprest/index.html" id="navbarDropdownMenuLink">
                             Agimprest
                         </a>
                     </li>
@@ -40,9 +40,9 @@
                             CADASTRO
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Empresa</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/cliente.html">Cliente</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/usuario.html">Usuário</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/empresa.html">Empresa</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/cliente.html">Cliente</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/usuario.html">Usuário</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -51,7 +51,7 @@
                             MOVIMENTAÇÕES
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/movimentacoes/movimentacoes.html">Listar </a></li>
+                            <li><a class="dropdown-item" href="/agimprest/movimentacoes/movimentacoes.html">Listar </a></li>
 
                         </ul>
                     </li>
@@ -60,7 +60,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             RELATÓRIOS
                         </a>
-                       
+
                     </li>
                 </ul>
             </div>
@@ -126,22 +126,44 @@
     </footer>
 
     <script>
-        let usuarios = window.localStorage.getItem("usuarios")
-        if (usuarios != undefined && usuarios != null) {
-            usuarios = Array.from(JSON.parse(usuarios))
+        // $.ajax({
+        //     method: "POST",
+        //     url: "some.php",
+        //     data: { name: "John", location: "Boston" }
+        // })
+        //     .done(function (msg) {
+        //         alert("Data Saved: " + msg);
+        //     });
+
+        $.ajax({
+            method: "GET",
+            url: "https://64c2c283eb7fd5d6ebd04e08.mockapi.io/agimprest/usuario",
+        }).done(function (msg) {
+            usuarios = msg
             usuarios.forEach(us => {
                 var numeroLinha = $('#tabela-listagem-usuarios tbody tr th').last().html()
-                const html = `<tr><th scope=\"row\">${eval(parseInt(numeroLinha) + 1)}</th><td>${us.usuario}</td><td>${us.categoria}</td><td><div class=\"d-flex justify-content-around\"><i class=\"bi bi-pencil-square\" data-bs-toggle=\"tooltip\" data-bs-title=\"Editar Usuario\"></i><i class=\"bi bi-trash\" data-bs-toggle=\"tooltip\" data-bs-title=\"Remover Usuario\"></i></div></td></tr>`
+                const html = `<tr><th scope=\"row\">${us.id}</th><td>${us.nome}</td><td>${us.categoria}</td><td><div class=\"d-flex justify-content-around\"><i class=\"bi bi-pencil-square\" data-bs-toggle=\"tooltip\" data-bs-title=\"Editar Usuario\"></i><i class=\"bi bi-trash\" data-bs-toggle=\"tooltip\" data-bs-title=\"Remover Usuario\"></i></div></td></tr>`
                 $('#tabela-listagem-usuarios tbody').append(html)
             })
-        }
+        }).fail(function(err) {
+            alert(err)
+        });
+
+        // let usuarios = window.localStorage.getItem("usuarios")
+        // if (usuarios != undefined && usuarios != null) {
+        //     usuarios = Array.from(JSON.parse(usuarios))
+            // usuarios.forEach(us => {
+            //     var numeroLinha = $('#tabela-listagem-usuarios tbody tr th').last().html()
+            //     const html = `<tr><th scope=\"row\">${eval(parseInt(numeroLinha) + 1)}</th><td>${us.usuario}</td><td>${us.categoria}</td><td><div class=\"d-flex justify-content-around\"><i class=\"bi bi-pencil-square\" data-bs-toggle=\"tooltip\" data-bs-title=\"Editar Usuario\"></i><i class=\"bi bi-trash\" data-bs-toggle=\"tooltip\" data-bs-title=\"Remover Usuario\"></i></div></td></tr>`
+            //     $('#tabela-listagem-usuarios tbody').append(html)
+            // })
+        // }
 
         $("#cadastrar-usuario").click((event) => window.location.href = "../cadastro/usuario.html")
 
 
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-        console.log(usuarios)
     </script>
 </body>
 

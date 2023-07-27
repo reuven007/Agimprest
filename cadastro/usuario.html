@@ -29,7 +29,7 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/index.html" id="navbarDropdownMenuLink">
+                        <a class="nav-link" href="/agimprest/index.html" id="navbarDropdownMenuLink">
                             Agimprest
                         </a>
                     </li>
@@ -39,9 +39,9 @@
                             CADASTRO
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Empresa</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/cliente.html">Cliente</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/usuario.html">Usuário</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/empresa.html">Empresa</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/cliente.html">Cliente</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/usuario.html">Usuário</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -50,7 +50,8 @@
                             MOVIMENTAÇÕES
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="http://127.0.0.1:5500/movimentacoes/movimentacoes.html">Listar </a></li>
+                            <li><a class="dropdown-item"
+                                    href="/agimprest/movimentacoes/movimentacoes.html">Listar </a></li>
                         </ul>
                     </li>
 
@@ -59,11 +60,12 @@
         </div>
         <div class="justify-content-end d-flex col">
             <div class="d-flex justify-content-center" style="flex-basis: min-content;
-            flex-direction: column;align-items: center;">
+                flex-direction: column;align-items: center;">
                 <div class="avatar avatar-usuario"></div>
                 <span id="nome-usuario">Usuario</span>
             </div>
         </div>
+
     </nav>
 
 
@@ -135,16 +137,11 @@
     </footer>
 
     <script>
-        // document.getElementById("listar").addEventListener("onclick", function () {
-        //     window.location.href = "../listagem/usuario.html"
-        // })
         $("#listar").click((event) => { window.location.href = "../listagem/listagem-usuario.html"; event.preventDefault })
         $("#salvar").click(event => {
 
             if (validaFormulario(event)) {
 
-                // $("#form-cadastro-usuario").submit()
-                // event.preventDefault()
                 const usuario = $("#usuario");
                 const senha = $("#senha");
                 const confirmaSenha = $("#confirmaSenha");
@@ -157,7 +154,6 @@
                         text: 'As senhas nao batem!'
                     })
                 } else {
-
                     const usuarios = window.localStorage.getItem("usuarios")
                     if (usuarios != undefined) {
                         const users = Array.from(JSON.parse(usuarios))
@@ -166,22 +162,12 @@
                     } else {
                         window.localStorage.setItem("usuarios", JSON.stringify([{ usuario: usuario.val(), senha: senha.val(), categoria: categoria.val() }]))
                     }
-
-
-                    Swal.fire(
-                        'Bom Trabalho!',
-                        `Usuario ${usuario.val()} cadastrado com sucesso`,
-                        'parabens'
-                    )
                     usuario.val("")
                     senha.val("")
                     confirmaSenha.val("")
                     categoria.val("")
                 }
-
-
             }
-
         })
     </script>
 

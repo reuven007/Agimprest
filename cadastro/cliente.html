@@ -28,7 +28,7 @@
         <ul class="navbar-nav">
 
           <li class="nav-item dropdown">
-            <a class="nav-link" href="/index.html" id="navbarDropdownMenuLink">
+            <a class="nav-link" href="/agimprest/index.html" id="navbarDropdownMenuLink">
               Agimprest
             </a>
           </li>
@@ -39,9 +39,9 @@
               CADASTRO
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="/cadastro/empresa.html">Empresa</a></li>
-              <li><a class="dropdown-item" href="/cadastro/cliente.html">Cliente</a></li>
-              <li><a class="dropdown-item" href="/cadastro/usuario.html">Usuário</a></li>
+              <li><a class="dropdown-item" href="/agimprest/cadastro/empresa.html">Empresa</a></li>
+              <li><a class="dropdown-item" href="/agimprest/cadastro/cliente.html">Cliente</a></li>
+              <li><a class="dropdown-item" href="/agimprest/cadastro/usuario.html">Usuário</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -50,13 +50,13 @@
               MOVIMENTAÇÕES
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="/movimentacoes/movimentacoes.html">Listar </a></li>
+              <li><a class="dropdown-item" href="/agimprest/movimentacoes/movimentacoes.html">Cadastrar </a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
 
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="/cadastro/empresa.html">Balanço</a></li>
+              <li><a class="dropdown-item" href="/agimprest/cadastro/empresa.html">Balanço</a></li>
             </ul>
           </li>
         </ul>
@@ -64,10 +64,10 @@
       <div class="justify-content-end d-flex col">
         <div class="d-flex justify-content-center" style="flex-basis: min-content;
         flex-direction: column;align-items: center;">
-            <div class="avatar avatar-usuario"></div>
-            <span id="nome-usuario">Usuario</span>
+          <div class="avatar avatar-usuario"></div>
+          <span id="nome-usuario">Usuario</span>
         </div>
-    </div>
+      </div>
     </div>
   </nav>
 
@@ -80,37 +80,55 @@
           <div class="col-md-12 mb-3">
             <label for="nome" class="form-label">Nome Completo</label>
             <input type="text" class="form-control" id="nome" name="nome" required>
+            <div class="valid-feedback">
+              Parece Bom!
+          </div>
+          <div class="invalid-feedback">
+              Insira um Nome.
+          </div>
           </div>
 
           <div class="col-md-6 mb-3">
             <label for="cpf" class="form-label">Cpf</label>
             <input type="text" class="form-control" id="cpf" name="cpf" required>
+            <div class="valid-feedback">
+              Parece Bom!
+          </div>
+          <div class="invalid-feedback">
+              Insira um Cpf valido/existente.
+          </div>
           </div>
 
           <div class="col-md-6 mb-3">
             <label for="telefone" class="form-label">Telefone</label>
             <input type="text" class="form-control" id="telefone" name="telefone" required>
+            <div class="valid-feedback">
+              Parece Bom!
+          </div>
+          <div class="invalid-feedback">
+              Insira um Telefone valido/existente.
+          </div>
           </div>
           <div class="col-md-12 mb-3">
             <label for="logradouro" class="form-label">Logradouro</label>
-            <input type="text" class="form-control" id="logradouro" name="logradouro" required>
+            <input type="text" class="form-control" id="logradouro" name="logradouro">
           </div>
           <div class="col-md-3 mb-3">
             <label for="numero" class="form-label">Numero</label>
-            <input type="number" class="form-control" id="numero" name="numero" required>
+            <input type="number" class="form-control" id="numero" name="numero">
           </div>
           <div class="col-md-9 mb-3">
             <label for="complemento" class="form-label">Complemento</label>
-            <input type="text" class="form-control" id="complemento" name="complemento" required>
+            <input type="text" class="form-control" id="complemento" name="complemento">
           </div>
 
           <div class="col-md-6 mb-3">
             <label for="bairro" class="form-label">Bairro</label>
-            <input type="text" class="form-control" id="bairro" name="bairro" required>
+            <input type="text" class="form-control" id="bairro" name="bairro">
           </div>
           <div class="col-md-6 mb-3">
             <label for="cep" class="form-label">Cep</label>
-            <input type="text" class="form-control" id="cep" name="cep" required>
+            <input type="text" class="form-control" id="cep" name="cep">
           </div>
 
           <div class="col-md-6 mb-3">
@@ -146,20 +164,18 @@
 
 
   <script>
+    $("#salvar").click(event => {
+      if (validaFormulario(event)) {
+        alert(usuario, senha, confirmaSenha, categoria)
+      }
+    })
 
     $("#listar").click((event) => { window.location.href = "../listagem/listagem-cliente.html"; event.preventDefault })
     $("#cep").inputmask("99999-999")
     $("#telefone").inputmask("(99)99999-9999")
     $("#cpf").inputmask("999.999.999-99")
 
-    if (validaFormulario(event)) {
 
-      const usuario = $("nome");
-      const senha = $("#cpf");
-      const confirmaSenha = $("#tipo");
-      const categoria = $("#valor");
-      alert(usuario, senha, confirmaSenha, categoria)
-    }
   </script>
 </body>
 

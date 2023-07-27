@@ -33,7 +33,7 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/index.html" id="navbarDropdownMenuLink">
+                        <a class="nav-link" href="/agimprest/index.html" id="navbarDropdownMenuLink">
                             Agimprest
                         </a>
                     </li>
@@ -44,17 +44,16 @@
                             CADASTRO
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Empresa</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/cliente.html">Cliente</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/usuario.html">Usuário</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/empresa.html">Empresa</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/cliente.html">Cliente</a></li>
+                            <li><a class="dropdown-item" href="/agimprest/cadastro/usuario.html">Usuário</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="/agimprest" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="/agimprest/movimentacoes/movimentacoes.html">
                             MOVIMENTAÇÕES
                         </a>
-                        
                     </li>
                     <li class="nav-item dropdown">
 
@@ -163,30 +162,6 @@
         })
 
         $("#valor").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."})
-
-        // var elementoCpf = document.getElementById("cpf")
-        // cpf.addEventListener("focusout", function (event) {
-
-        //     var cpf = elementoCpf.value;
-        //     if (cpf.length == 0) {
-        //         alert("CPF OBRIGATÓRIO")
-        //         return
-        //     }
-
-        //     //buscar pro DB
-        //     var cliente = { nome: "Fraelzinho" }
-        //     var elementoNome = document.getElementById("nome")
-        //     elementoNome.value = cliente.nome;
-        //     var divEscondida = document.querySelector(".campos-hidden")
-        //     divEscondida.removeAttribute("hidden")
-
-        //     //#
-        //     //.
-        //     //[]
-
-        // })
-
-
 
     </script>
 </body>
