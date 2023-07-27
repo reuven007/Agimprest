@@ -15,6 +15,8 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+<script src="../public/assets/js/script.js"></script>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -49,60 +51,74 @@
                             MOVIMENTAÇÕES
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Entrada</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/cliente.html">Saída</a></li>
+                            <li><a class="dropdown-item" href="/movimentacoes/movimentacoes.html">Listar </a></li>
+
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            RELATÓRIOS
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Balanço</a></li>
-                        </ul>
-                    </li>
+                   
                 </ul>
+            </div>
+            <div class="justify-content-end d-flex col">
+                <div class="d-flex justify-content-center" style="flex-basis: min-content;
+                flex-direction: column;align-items: center;">
+                    <div class="avatar avatar-usuario"></div>
+                    <span id="nome-usuario">Usuario</span>
+                </div>
             </div>
         </div>
 
-        <div class="justify-content-end avatar"> </div>
+        
     </nav>
 
     <div class="container mt-5 mb-5 section-center">
         <div class="row justify-content-center">
             <div class="col-md-6">
 
-                <form class="row g-3">
+                <form class="row g-3 needs-validation">
 
                     <div class="col-md-12 mb-3">
                         <label for="nome" class="form-label">Razao Social</label>
                         <input type="text" class="form-control" id="nome" name="nome">
+                        
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label for="cpf" class="form-label">Fantasia</label>
-                        <input type="text" class="form-control" id="cpf" name="cpf" required>
+                        <label for="fantasia" class="form-label">Fantasia</label>
+                        <input type="text" class="form-control" id="fantasia" name="fantasia" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Nome Fantasia.
+                        </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="telefone" class="form-label">CNPJ</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone" required>
+                        <label for="cnpj" class="form-label">CNPJ</label>
+                        <input type="text" class="form-control" id="cnpj" name="cnpj" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um CNPJ valido/existente.
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="telefone" class="form-label">Telefone</label>
                         <input type="text" class="form-control" id="telefone" name="telefone" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Telefone valido/existente.
+                        </div>
                     </div>
-                    <!-- <div class="col-md-6 mb-3">
-            <label for="telefone" class="form-label">Capital Social</label>
-            <input type="text" class="form-control" id="telefone"  name="telefone" required>
-          </div> -->
-
+              
                     <div class="col-md-6 mb-3">
-                        <label for="teste" class="form-label">Capital Social</label>
+                        <label for="capital-social" class="form-label">Capital Social</label>
                         <div class="input-group mb-12">
                             <span class="input-group-text">$</span>
-                            <input type="text" id="teste" class="form-control"
+                            <input type="text" id="capital-social" name="capital-social" class="form-control"
                                 aria-label="Amount (to the nearest dollar)">
                             <span class="input-group-text">.00</span>
                         </div>
@@ -110,44 +126,93 @@
                     <div class="col-md-6 mb-3">
                         <label for="taxa" class="form-label">Taxa (%)</label>
                         <input type="number" class="form-control" id="taxa" name="taxa" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira uma Taxa válida/existente.
+                        </div>
                     </div>
 
 
                     <div class="col-md-12 mb-3">
                         <label for="logradouro" class="form-label">Logradouro</label>
                         <input type="text" class="form-control" id="logradouro" name="logradouro" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Logradouro valido/existente.
+                        </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="numero" class="form-label">Numero</label>
                         <input type="number" class="form-control" id="numero" name="numero" required>
+                        
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Numero valido/existente.
+                        </div>
                     </div>
                     <div class="col-md-9 mb-3">
                         <label for="complemento" class="form-label">Complemento</label>
                         <input type="text" class="form-control" id="complemento" name="complemento" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Complemento valido/existente.
+                        </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="bairro" class="form-label">Bairro</label>
                         <input type="text" class="form-control" id="bairro" name="bairro" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um bairro valido/existente.
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="cep" class="form-label">Cep</label>
                         <input type="text" class="form-control" id="cep" name="cep" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Cep valido/existente.
+                        </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="cidade" class="form-label">Cidade</label>
                         <input type="text" class="form-control" id="cidade" name="cidade" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira uma Cidade valido/existente.
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="estado" class="form-label">Estado</label>
                         <select class="form-control" id="estado" name="estado" required>
+                            <div class="valid-feedback">
+                                Parece Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Insira um Estado valido/existente.
+                            </div>
                             <option selected disabled>Rio de Janeiro</option>
                         </select>
                     </div>
 
                     <div class="d-flex justify-content-between col-md-12 ">
-                        <button type="submit" class="btn btn-primary" onlclick="">Salvar</button>
+                        <button type="button" class="btn btn-primary" id="salvar">Salvar</button>
                         <button type="button" class="btn btn-success" id="listar">Listagem de Empresas</button>
                     </div>
 
@@ -195,7 +260,7 @@
         $("#cep").inputmask("99999-999")
         $("#telefone").inputmask("(99)99999-9999")
         $("#cpf").inputmask("999.999.999-99")
-
+        $("#capital-social").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."})
 
     </script>
 </body>

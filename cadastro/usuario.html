@@ -16,6 +16,7 @@
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../public/assets/js/script.js"></script>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,7 +31,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="/index.html" id="navbarDropdownMenuLink">
                             Agimprest
-                          </a>
+                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="cadastro" role="button"
@@ -49,46 +50,64 @@
                             MOVIMENTAÇÕES
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Entrada</a></li>
-                            <li><a class="dropdown-item" href="/cadastro/cliente.html">Saída</a></li>
+                            <li><a class="dropdown-item" href="http://127.0.0.1:5500/movimentacoes/movimentacoes.html">Listar </a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="relatorios" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            RELATÓRIOS
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastro/empresa.html">Balanço</a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>
         </div>
-
-        <div class="justify-content-end avatar"> </div>
+        <div class="justify-content-end d-flex col">
+            <div class="d-flex justify-content-center" style="flex-basis: min-content;
+            flex-direction: column;align-items: center;">
+                <div class="avatar avatar-usuario"></div>
+                <span id="nome-usuario">Usuario</span>
+            </div>
+        </div>
     </nav>
+
 
 
     <div class="container mt-5 mb-5 section-center">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form id="form-cadastro-usuario">
-                    <div class="mb-3">
+                <form id="form-cadastro-usuario" class="row g-3 needs-validation">
+                    <div class="col-md-12 mb-3">
                         <label for="usuario" class="form-label">Usuário (E-mail)</label>
                         <input type="email" class="form-control" id="usuario" name="usuario" required>
                     </div>
-                    <div class="mb-3">
+
+                    <div class="col-md-6 mb-3">
                         <label for="senha" class="form-label">Senha</label>
                         <input type="password" class="form-control" id="senha" name="senha" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Senha valida/existente.
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="confirmaSenha" class="form-label">Confirme a Senha</label>
-                        <input type="password" class="form-control" id="confirmaSenha" name="confirmaSenha" required>
-                    </div>
+
                     <div class="col-md-6 mb-3">
+                        <label for="confirma-senha" class="form-label">Confirme a Senha</label>
+                        <input type="password" class="form-control" id="confirma-senha" name="confirma-senha" required>
+                        <div class="valid-feedback">
+                            Parece Bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Insira um Senha valida/existente.
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
                         <label for="categoria" class="form-label">Categoria</label>
                         <select class="form-control" id="categoria" name="categoria" required>
+                            <div class="valid-feedback">
+                                Parece Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Insira uma Categoria valido/existente.
+                            </div>
                             <option selected disabled>Selecione uma categoria...</option>
                             <option>Administrador</option>
                             <option>Operador</option>
@@ -113,6 +132,7 @@
             </div>
         </div>
     </footer>
+    </footer>
 
     <script>
         // document.getElementById("listar").addEventListener("onclick", function () {
@@ -121,40 +141,45 @@
         $("#listar").click((event) => { window.location.href = "../listagem/listagem-usuario.html"; event.preventDefault })
         $("#salvar").click(event => {
 
-            // $("#form-cadastro-usuario").submit()
-            // event.preventDefault()
-            const usuario = $("#usuario");
-            const senha = $("#senha");
-            const confirmaSenha = $("#confirmaSenha");
-            const categoria = $("#categoria");
+            if (validaFormulario(event)) {
 
-            if (senha.val() != confirmaSenha.val()) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'As senhas nao batem!'
-                })
-            } else {
+                // $("#form-cadastro-usuario").submit()
+                // event.preventDefault()
+                const usuario = $("#usuario");
+                const senha = $("#senha");
+                const confirmaSenha = $("#confirmaSenha");
+                const categoria = $("#categoria");
 
-                const usuarios = window.localStorage.getItem("usuarios")
-                if (usuarios != undefined) {
-                    const users = Array.from(JSON.parse(usuarios))
-                    users.push({ usuario: usuario.val(), senha: senha.val(), categoria: categoria.val() })
-                    window.localStorage.setItem("usuarios", JSON.stringify(users))
+                if (senha.val() != confirmaSenha.val()) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'As senhas nao batem!'
+                    })
                 } else {
-                    window.localStorage.setItem("usuarios", JSON.stringify([{ usuario: usuario.val(), senha: senha.val(), categoria: categoria.val() }]))
+
+                    const usuarios = window.localStorage.getItem("usuarios")
+                    if (usuarios != undefined) {
+                        const users = Array.from(JSON.parse(usuarios))
+                        users.push({ usuario: usuario.val(), senha: senha.val(), categoria: categoria.val() })
+                        window.localStorage.setItem("usuarios", JSON.stringify(users))
+                    } else {
+                        window.localStorage.setItem("usuarios", JSON.stringify([{ usuario: usuario.val(), senha: senha.val(), categoria: categoria.val() }]))
+                    }
+
+
+                    Swal.fire(
+                        'Bom Trabalho!',
+                        `Usuario ${usuario.val()} cadastrado com sucesso`,
+                        'parabens'
+                    )
+                    usuario.val("")
+                    senha.val("")
+                    confirmaSenha.val("")
+                    categoria.val("")
                 }
 
 
-                Swal.fire(
-                    'Bom Trabalho!',
-                    `Usuario ${usuario.val()} cadastrado com sucesso`,
-                    'parabens'
-                )
-                usuario.val("")
-                senha.val("")
-                confirmaSenha.val("")
-                categoria.val("")
             }
 
         })
