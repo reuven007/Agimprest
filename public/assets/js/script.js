@@ -23,5 +23,11 @@ function getHeigth() {
         || document.body.clientHeight;
 }
 
-
+var user = window.localStorage.getItem('user.email')
+var senha = window.localStorage.getItem('user.senha')
+if(user !== 'administrador' || senha !== '123456'){
+    window.location.href = 'login.html'
+}else if(window.location.href.includes('login.html')) {
+    window.location.href = 'index.html'
+}
 
